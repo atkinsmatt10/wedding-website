@@ -11,14 +11,10 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import FAQ from '@/components/faq';
 import Heading from '@/components/heading';
-import { Input } from '@/components/ui/input';
 import Carousel from '@/components/carousel';
 import Countdown from '@/components/countdown';
 import { RSVPForm } from '@/components/rsvp';
-import Arrow from '@/components/animated-arrow';
-import ArrowTwo from '@/components/arrow-two';
-import ArrowTwoS from '@/components/arrow-tw';
-import ArrowTwoSS from '@/components/arrow-trd';
+import AnimatedScrable from '@/components/scrable';
 
 const meow = Meow_Script({ subsets: ['latin'], weight: '400' });
 
@@ -140,7 +136,7 @@ export default function Home() {
               Fishtown if you can find it. There will also be a shuttle bus from
               the hotel.
             </p>
-            <ArrowTwoSS />
+            <AnimatedScrable variant={1} />
           </div>
           <div className="max-w-sm row-start-2 col-start-2 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
@@ -153,7 +149,7 @@ export default function Home() {
               Make your way over to the ceremony at Lilah for the I Do's part of
               the night.
             </p>
-            <ArrowTwoS />
+            <AnimatedScrable variant={2} />
           </div>
           <div className="max-w-sm row-start-3 col-start-1 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
@@ -168,8 +164,7 @@ export default function Home() {
               passed appetizers. Enjoy a drink and catch up with friends and
               family.
             </p>
-
-            <ArrowTwo />
+            <AnimatedScrable variant={3} />
           </div>
           <div className="max-w-sm row-start-4 col-start-2 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
@@ -183,7 +178,7 @@ export default function Home() {
               reception, where we'll continue celebrating with dinner, drinks,
               and dancing. We're excited to party with everyone!
             </p>
-            <Arrow />
+            <AnimatedScrable variant={4} />
           </div>
           <div className="max-w-sm row-start-5 col-start-1">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
