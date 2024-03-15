@@ -15,6 +15,8 @@ import Carousel from '@/components/carousel';
 import Countdown from '@/components/countdown';
 import { RSVPForm } from '@/components/rsvp';
 import AnimatedScrable from '@/components/scrable';
+import Divider from '@/components/divider';
+import AnimatedFlower from '@/components/flower';
 
 const meow = Meow_Script({ subsets: ['latin'], weight: '400' });
 
@@ -78,21 +80,9 @@ export default function Home() {
           />
         </div>
       </section>
-      <Image
-        src="/divider.svg"
-        width={318}
-        height={22}
-        alt=""
-        className="mt-20 mb-6 mx-auto"
-      />
+      <Divider />
       <section id="our-story" className="py-12 relative">
-        <Image
-          src="/flower.svg"
-          width={133}
-          height={85}
-          alt=""
-          className="mt-20 mb-6 mx-auto absolute right-10 -top-48 rotate-180"
-        />
+        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-10 -top-48 rotate-180" />
         <div className="max-w-3xl mx-auto text-center">
           <Heading>How it all began</Heading>
           <p className="text-3xl mb-4">
@@ -113,13 +103,7 @@ export default function Home() {
         <Carousel />
       </section>
       <section id="schedule" className="relative py-12">
-        <Image
-          src="/flower.svg"
-          width={133}
-          height={85}
-          alt=""
-          className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28 rotate-180"
-        />
+        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28 rotate-180" />
         <div className="absolute right-0 top-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <Heading>The Wedding Day</Heading>
@@ -218,21 +202,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Image
-        src="/divider.svg"
-        width={318}
-        height={22}
-        alt=""
-        className="mt-20 mb-5 mx-auto"
-      />
+      <Divider />
       <section id="stay" className="py-16 relative">
-        <Image
-          src="/flower.svg"
-          width={133}
-          height={85}
-          alt=""
-          className="mt-20 mb-6 mx-auto absolute right-0 -top-28 rotate-180"
-        />
+        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-12 -top-28 rotate-180" />
         <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 rounded-full bg-gold w-56 h-56 blur-[100px]" />
         <Heading>Your Stay in Philadelphia</Heading>
         <p className="text-center max-w-md mx-auto">
@@ -274,13 +246,7 @@ export default function Home() {
           className="absolute left-0 -bottom-8"
         />
       </section>
-      <Image
-        src="/divider.svg"
-        width={318}
-        height={22}
-        alt=""
-        className="my-20 mx-auto"
-      />
+      <Divider />
       <section id="faq" className="py-12 relative">
         <div className="absolute left-0 top-40 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <Heading>Frequently Asked Questions</Heading>
@@ -297,21 +263,9 @@ export default function Home() {
         </p>
         <Button variant="default">Give a Gift</Button>
       </section>
-      <Image
-        src="/divider.svg"
-        width={318}
-        height={22}
-        alt=""
-        className="my-20 mx-auto"
-      />
+      <Divider />
       <section id="rsvp" className="relative pb-32">
-        <Image
-          src="/flower.svg"
-          width={133}
-          height={85}
-          alt=""
-          className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28"
-        />
+        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28" />
         <div className="absolute right-0 bottom-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
         <h3 className="font-bold text-xl text-gold text-center">RSVP</h3>
         <Heading>You’re Invited!</Heading>
