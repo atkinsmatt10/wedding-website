@@ -56,9 +56,9 @@ export default function Home() {
         </div>
       </section>
       <Divider />
-      <section id="our-story" className="py-12 relative px-5">
+      <section id="our-story" className="py-12 relative">
         <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-10 -top-48 rotate-180" />
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center px-5">
           <Heading>How it all began</Heading>
           <p className="text-xl xl:text-3xl mb-4">
             Nicole Gasser and Matt Atkins first crossed paths in 2016 at
