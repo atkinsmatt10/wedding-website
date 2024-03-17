@@ -1,9 +1,10 @@
 'use client';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 1], [-distance, distance]);
+  return useTransform(value, [0, 2], [-distance, distance]);
 }
 
 export default function AnimatedFlower({ className }: { className: string }) {
@@ -12,12 +13,13 @@ export default function AnimatedFlower({ className }: { className: string }) {
   const y = useParallax(scrollYProgress, 100);
 
   return (
-    <div className={className} ref={ref}>
+    <div className={cn('-z-10', className)} ref={ref}>
       <motion.svg
         width="133"
         height="85"
         viewBox="0 0 233 185"
         fill="none"
+        className="w-16 lg:w-auto"
         style={{ y }}
       >
         <g filter="url(#filter0_d_141_53597)">

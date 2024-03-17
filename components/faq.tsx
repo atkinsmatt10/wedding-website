@@ -7,17 +7,17 @@ import {
 
 export default function FAQ() {
   return (
-    <Accordion type="single" collapsible className="max-w-7xl mx-auto">
+    <Accordion type="single" collapsible className="ml-6 max-w-6xl xl:mx-auto">
       {data.map(({ q, a }, index) => (
         <AccordionItem
           key={`item-${index}`}
           value={`item-${index}`}
           className="border-none hover:text-gray/80"
         >
-          <AccordionTrigger className="hover:no-underline text-2xl before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
+          <AccordionTrigger className="hover:no-underline text-left xl:text-center xl:text-2xl before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
             {q}
           </AccordionTrigger>
-          <AccordionContent className="text-xl">{a}</AccordionContent>
+          <AccordionContent className="xl:text-xl">{a}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>

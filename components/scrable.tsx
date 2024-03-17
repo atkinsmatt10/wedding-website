@@ -1,4 +1,5 @@
 'use client';
+import { cn } from '@/lib/utils';
 import { Variants, motion, useAnimation, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
@@ -63,7 +64,7 @@ export default function AnimatedScrable({ variant }: AnimatedScrableProps) {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       viewBox="0 0 800 400"
-      className={scrableVars[variant].position}
+      className={cn('hidden lg:block', scrableVars[variant].position)}
       ref={ref}
     >
       <motion.path

@@ -27,30 +27,30 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-10 -mt-16">
+    <div className="flex items-center justify-center gap-4 lg:gap-10 -mt-5 lg:-mt-12">
       <div className="flex flex-col text-white items-center justify-center gap-1">
-        <strong className="text-5xl font-bold">
+        <strong className="text-lg xl:text-5xl font-bold">
           {('0' + countdown.days).slice(-2)}
         </strong>
-        <span className="text-sm">Days</span>
+        <span className="text-xs lg:text-sm">Days</span>
       </div>
       <div className="flex flex-col text-white items-center justify-center gap-1">
-        <strong className="text-5xl font-bold">
+        <strong className="text-lg xl:text-5xl font-bold">
           {('0' + countdown.hours).slice(-2)}
         </strong>
-        <span className="text-sm">Hours</span>
+        <span className="text-xs lg:text-sm">Hours</span>
       </div>
       <div className="flex flex-col text-white items-center justify-center gap-1">
-        <strong className="text-5xl font-bold">
+        <strong className="text-lg xl:text-5xl font-bold">
           {('0' + countdown.minutes).slice(-2)}
         </strong>
-        <span className="text-sm">Minutes</span>
+        <span className="text-xs lg:text-sm">Minutes</span>
       </div>
       <div className="flex flex-col text-white items-center justify-center gap-1">
-        <strong className="text-5xl font-bold">
+        <strong className="text-lg xl:text-5xl font-bold">
           {('0' + countdown.seconds).slice(-2)}
         </strong>
-        <span className="text-sm">Seconds</span>
+        <span className="text-xs lg:text-sm">Seconds</span>
       </div>
     </div>
   );

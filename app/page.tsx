@@ -20,11 +20,13 @@ export default function Home() {
   return (
     <main role="main">
       <Hero />
-      <section className="relative">
+      <section className="relative px-5">
         <div className="absolute left-0 top-0 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <div className="flex flex-col items-center justify-center py-12">
-          <h2 className="text-4xl font-bold mb-2">Saturday, June 1, 2024</h2>
-          <p className="mb-6 font-semibold">
+          <h2 className="text-2xl xl:text-4xl font-bold mb-2">
+            Saturday, June 1, 2024
+          </h2>
+          <p className="text-sm mb-6 font-semibold">
             At Lilah 1601 N Front St, <br />
             Philadelphia, PA 19122
           </p>
@@ -44,6 +46,7 @@ export default function Home() {
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d764.3821011451081!2d-75.1341665!3d39.9742954!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c955cc3e2d19%3A0x5d1dc5c0ca2f84b!2sLilah!5e0!3m2!1ses-419!2smx!4v1709532845513!5m2!1ses-419!2smx"
             width="600"
             height="450"
+            className="aspect-video w-full h-auto max-w-3xl"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -51,11 +54,11 @@ export default function Home() {
         </div>
       </section>
       <Divider />
-      <section id="our-story" className="py-12 relative">
+      <section id="our-story" className="py-12 relative px-5">
         <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-10 -top-48 rotate-180" />
         <div className="max-w-3xl mx-auto text-center">
           <Heading>How it all began</Heading>
-          <p className="text-3xl mb-4">
+          <p className="text-xl xl:text-3xl mb-4">
             Nicole Gasser and Matt Atkins first crossed paths in 2016 at
             McGillians in Philadelphia during Nicole's sister's birthday party.
             Matt was immediately taken with Nicole's charm. They exchanged
@@ -63,7 +66,7 @@ export default function Home() {
             week, Matt asked Nicole out to lunch near her school in Northeast
             PA.
           </p>
-          <p className="text-3xl">
+          <p className="text-xl xl:text-3xl">
             They immediately clicked, leading Nicole to visit Colorado for a
             weekend adventure hosted by Matt. Eventually, Matt moved into a
             four-floor walk-up in Philly, a place that continues to hold a
@@ -72,13 +75,13 @@ export default function Home() {
         </div>
         <Carousel />
       </section>
-      <section id="schedule" className="relative py-12">
+      <section id="schedule" className="relative py-12 px-5">
         <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28 rotate-180" />
         <div className="absolute right-0 top-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <Heading>The Wedding Day</Heading>
-        <div className="grid place-items-center gap-40 mt-20">
-          <div className="max-w-sm col-start-1 relative">
+        <div className="grid place-items-center gap-12 xl:gap-40 mt-20 ml-6 xl:ml-auto">
+          <div className="xl:max-w-sm xl:col-start-1 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
               Welcome to Lilah
             </h4>
@@ -92,7 +95,7 @@ export default function Home() {
             </p>
             <AnimatedScrable variant={1} />
           </div>
-          <div className="max-w-sm row-start-2 col-start-2 relative">
+          <div className="xl:max-w-sm xl:row-start-2 xl:col-start-2 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
               The Ceremony
             </h4>
@@ -105,7 +108,7 @@ export default function Home() {
             </p>
             <AnimatedScrable variant={2} />
           </div>
-          <div className="max-w-sm row-start-3 col-start-1 relative">
+          <div className="xl:max-w-sm xl:row-start-3 xl:col-start-1 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
               Coctail Hour
             </h4>
@@ -120,7 +123,7 @@ export default function Home() {
             </p>
             <AnimatedScrable variant={3} />
           </div>
-          <div className="max-w-sm row-start-4 col-start-2 relative">
+          <div className="xl:max-w-sm xl:row-start-4 xl:col-start-2 relative">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
               Reception
             </h4>
@@ -134,7 +137,7 @@ export default function Home() {
             </p>
             <AnimatedScrable variant={4} />
           </div>
-          <div className="max-w-sm row-start-5 col-start-1">
+          <div className="xl:max-w-sm xl:row-start-5 xl:col-start-1">
             <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
               After Party
             </h4>
@@ -148,8 +151,14 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-8 py-8 mt-28 relative before:absolute before:h-full before:border-y-4 before:border-gold before:w-32">
-          <Image src="/museum.svg" width={248} height={392} alt="" />
+        <div className="flex items-center text-center lg:text-left justify-center gap-8 py-8 mt-28 relative before:absolute before:h-full before:border-y-4 before:border-gold before:w-32">
+          <Image
+            src="/museum.svg"
+            width={248}
+            height={392}
+            alt=""
+            className="hidden xl:block"
+          />
           <div className="max-w-sm">
             <h4 className="text-xl font-bold">After Party</h4>
             <span className="text-sm font-bold text-gold mb-4 block">
@@ -160,7 +169,7 @@ export default function Home() {
               Third Street, Philadelphia, PA
             </p>
             <Select>
-              <SelectTrigger className="w-[200px] border-light-gray text-sm">
+              <SelectTrigger className="w-[200px] border-light-gray text-sm mx-auto lg:ml-0">
                 <SelectValue placeholder="Save to your calendar" />
               </SelectTrigger>
               <SelectContent>
@@ -173,7 +182,7 @@ export default function Home() {
         </div>
       </section>
       <Divider />
-      <section id="stay" className="py-16 relative">
+      <section id="stay" className="py-16 relative px-5">
         <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-12 -top-28 rotate-180" />
         <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 rounded-full bg-gold w-56 h-56 blur-[100px]" />
         <Heading>Your Stay in Philadelphia</Heading>
@@ -182,7 +191,7 @@ export default function Home() {
           favorite spots in Philly.
         </p>
         <div className="mt-20 max-w-7xl mx-auto grid place-items-center gap-12">
-          <div className="max-w-xs text-center">
+          <div className="xl:max-w-xs text-center">
             <h3 className="font-bold text-xl mb-2">Lodging</h3>
             <p className="text-sm mb-4">
               There will be shuttles with limited seating available from the
@@ -190,7 +199,7 @@ export default function Home() {
             </p>
             <Button variant="default">Book a Room</Button>
           </div>
-          <div className="max-w-xs text-center row-start-2 col-start-2">
+          <div className="xl:max-w-xs text-center xl:row-start-2 xl:col-start-2">
             <h3 className="font-bold text-xl mb-2">Eat & Drink</h3>
             <p className="text-sm mb-4">
               Wm. Mulherin’s Sons, Lark, Middle Child, LMNO, Gilda, Johnny
@@ -198,7 +207,7 @@ export default function Home() {
             </p>
             <Button variant="default">Open Map</Button>
           </div>
-          <div className="max-w-xs text-center row-start-3 col-start-3">
+          <div className="xl:max-w-xs text-center xl:row-start-3 xl:col-start-3">
             <h3 className="font-bold text-xl mb-2">Things To Do</h3>
             <p className="text-sm mb-4">
               Philadelphia Museum of Art, Franklin Institute, Schuylkill River
@@ -213,18 +222,18 @@ export default function Home() {
           width={692}
           height={200}
           alt=""
-          className="absolute left-0 -bottom-8"
+          className="xl:absolute left-0 -bottom-8"
         />
       </section>
       <Divider />
-      <section id="faq" className="py-12 relative">
+      <section id="faq" className="py-12 relative px-5">
         <div className="absolute left-0 top-40 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <Heading>Frequently Asked Questions</Heading>
         <FAQ />
       </section>
       <section
         id="registry"
-        className="flex flex-col items-center justify-center py-12"
+        className="flex flex-col items-center justify-center py-12 px-5"
       >
         <Heading>Our Registry</Heading>
         <p className="max-w-md text-center mb-6">
@@ -234,7 +243,7 @@ export default function Home() {
         <Button variant="default">Give a Gift</Button>
       </section>
       <Divider />
-      <section id="rsvp" className="relative pb-32">
+      <section id="rsvp" className="relative pb-32 px-5">
         <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28" />
         <div className="absolute right-0 bottom-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
         <h3 className="font-bold text-xl text-gold text-center">RSVP</h3>
