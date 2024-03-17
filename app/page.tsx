@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Meow_Script } from 'next/font/google';
 import {
   Select,
   SelectContent,
@@ -8,48 +7,19 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import FAQ from '@/components/faq';
 import Heading from '@/components/heading';
 import Carousel from '@/components/carousel';
-import Countdown from '@/components/countdown';
 import { RSVPForm } from '@/components/rsvp';
 import AnimatedScrable from '@/components/scrable';
 import Divider from '@/components/divider';
 import AnimatedFlower from '@/components/flower';
-
-const meow = Meow_Script({ subsets: ['latin'], weight: '400' });
+import Hero from '@/components/hero';
 
 export default function Home() {
   return (
     <main role="main">
-      <header
-        className="bg-[url('/main-hero.jpg')] bg-cover bg-bottom w-full h-[120vh]"
-        id="top"
-      >
-        <nav className="flex items-center justify-center gap-12 text-white text-sm py-4">
-          <a href="#our-story">Our Story</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#stay">Stay</a>
-          <a href="#top">
-            <Image src="/logo.svg" alt="" width={71} height={80} />
-          </a>
-          <a href="#faq">FAQ</a>
-          <a href="#registry">Registry</a>
-          <a href="#rsvp">RSVP</a>
-        </nav>
-        <div>
-          <h1
-            className={cn(
-              'text-center text-gold text-[180px] pt-3',
-              meow.className
-            )}
-          >
-            Nicole & Matt
-          </h1>
-          <Countdown />
-        </div>
-      </header>
+      <Hero />
       <section className="relative">
         <div className="absolute left-0 top-0 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <div className="flex flex-col items-center justify-center py-12">
