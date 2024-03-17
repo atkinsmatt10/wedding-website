@@ -15,6 +15,8 @@ import AnimatedScrable from '@/components/scrable';
 import Divider from '@/components/divider';
 import AnimatedFlower from '@/components/flower';
 import Hero from '@/components/hero';
+import StayLink from '@/components/stay-link';
+import ScheduleBox from '@/components/schedule-box';
 
 export default function Home() {
   return (
@@ -81,75 +83,43 @@ export default function Home() {
         <div className="absolute left-0 top-1/2 -translate-y-1/2 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
         <Heading>The Wedding Day</Heading>
         <div className="grid place-items-center gap-12 xl:gap-40 mt-20 ml-6 xl:ml-auto">
-          <div className="xl:max-w-sm xl:col-start-1 relative">
-            <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
-              Welcome to Lilah
-            </h4>
-            <span className="text-sm font-bold text-gold mb-4 block">
-              Arrive by 5:30 pm
-            </span>
-            <p>
-              Entry to Lilah begins at 5 pm. Street parking is available in
-              Fishtown if you can find it. There will also be a shuttle bus from
-              the hotel.
-            </p>
-            <AnimatedScrable variant={1} />
-          </div>
-          <div className="xl:max-w-sm xl:row-start-2 xl:col-start-2 relative">
-            <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
-              The Ceremony
-            </h4>
-            <span className="text-sm font-bold text-gold mb-4 block">
-              6:00 pm - 6:30 pm
-            </span>
-            <p>
-              Make your way over to the ceremony at Lilah for the I Do's part of
-              the night.
-            </p>
-            <AnimatedScrable variant={2} />
-          </div>
-          <div className="xl:max-w-sm xl:row-start-3 xl:col-start-1 relative">
-            <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
-              Coctail Hour
-            </h4>
-            <span className="text-sm font-bold text-gold mb-4 block">
-              6:00 pm - 6:30 pm
-            </span>
-            <p>
-              After the ceremony, head to the bar area for cocktail hour. Both
-              alcoholic and non-alcoholic drinks will be served, along with a
-              passed appetizers. Enjoy a drink and catch up with friends and
-              family.
-            </p>
-            <AnimatedScrable variant={3} />
-          </div>
-          <div className="xl:max-w-sm xl:row-start-4 xl:col-start-2 relative">
-            <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
-              Reception
-            </h4>
-            <span className="text-sm font-bold text-gold mb-4 block">
-              6:00 pm - 6:30 pm
-            </span>
-            <p>
-              Join us for the main event! Head through the large doors to our
-              reception, where we'll continue celebrating with dinner, drinks,
-              and dancing. We're excited to party with everyone!
-            </p>
-            <AnimatedScrable variant={4} />
-          </div>
-          <div className="xl:max-w-sm xl:row-start-5 xl:col-start-1">
-            <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
-              After Party
-            </h4>
-            <span className="text-sm font-bold text-gold mb-4 block">
-              6:00 pm - 6:30 pm
-            </span>
-            <p>
-              After the reception, we'll be heading out in Fishtown for a
-              low-key, nothing fancy after party featuring a cash bar. Let's
-              keep the party going!
-            </p>
-          </div>
+          <ScheduleBox
+            title="Welcome to Lilah"
+            time="Arrive by 5:30 pm"
+            variant={1}
+          >
+            Entry to Lilah begins at 5 pm. Street parking is available in
+            Fishtown if you can find it. There will also be a shuttle bus from
+            the hotel.
+          </ScheduleBox>
+          <ScheduleBox
+            title="The Ceremony"
+            time="6:00 pm - 6:30 pm"
+            variant={2}
+          >
+            Make your way over to the ceremony at Lilah for the I Do's part of
+            the night.
+          </ScheduleBox>
+          <ScheduleBox
+            title="Coctail Hour"
+            time="6:00 pm - 6:30 pm"
+            variant={3}
+          >
+            After the ceremony, head to the bar area for cocktail hour. Both
+            alcoholic and non-alcoholic drinks will be served, along with a
+            passed appetizers. Enjoy a drink and catch up with friends and
+            family.
+          </ScheduleBox>
+          <ScheduleBox title="Reception" time="6:00 pm - 6:30 pm" variant={4}>
+            Join us for the main event! Head through the large doors to our
+            reception, where we'll continue celebrating with dinner, drinks, and
+            dancing. We're excited to party with everyone!
+          </ScheduleBox>
+          <ScheduleBox title="After Party" time="6:00 - 6:30 pm" variant={5}>
+            After the reception, we'll be heading out in Fishtown for a low-key,
+            nothing fancy after party featuring a cash bar. Let's keep the party
+            going!
+          </ScheduleBox>
         </div>
         <div className="flex items-center text-center lg:text-left justify-center gap-8 py-8 mt-28 relative before:absolute before:h-full before:border-y-4 before:border-gold before:w-32">
           <Image
@@ -191,31 +161,19 @@ export default function Home() {
           favorite spots in Philly.
         </p>
         <div className="mt-20 max-w-7xl mx-auto grid place-items-center gap-12">
-          <div className="xl:max-w-xs text-center">
-            <h3 className="font-bold text-xl mb-2">Lodging</h3>
-            <p className="text-sm mb-4">
-              There will be shuttles with limited seating available from the
-              Hilton Penns Landing & Kimpton Monico to the event and back.
-            </p>
-            <Button variant="default">Book a Room</Button>
-          </div>
-          <div className="xl:max-w-xs text-center xl:row-start-2 xl:col-start-2">
-            <h3 className="font-bold text-xl mb-2">Eat & Drink</h3>
-            <p className="text-sm mb-4">
-              Wm. Mulherin’s Sons, Lark, Middle Child, LMNO, Gilda, Johnny
-              Brenda's, International Bar, Martha, Two Robbers, Bok Ba
-            </p>
-            <Button variant="default">Open Map</Button>
-          </div>
-          <div className="xl:max-w-xs text-center xl:row-start-3 xl:col-start-3">
-            <h3 className="font-bold text-xl mb-2">Things To Do</h3>
-            <p className="text-sm mb-4">
-              Philadelphia Museum of Art, Franklin Institute, Schuylkill River
-              Trail, The Barnes Foundation, Wissahickon, Eastern State
-              Penitentiary
-            </p>
-            <Button variant="default">Open Map</Button>
-          </div>
+          <StayLink title="Lodging" href="" label="Book a Room">
+            There will be shuttles with limited seating available from the
+            Hilton Penns Landing & Kimpton Monico to the event and back.
+          </StayLink>
+          <StayLink title="Eat & Drink" href="" label="Open Map" align="middle">
+            Wm. Mulherin’s Sons, Lark, Middle Child, LMNO, Gilda, Johnny
+            Brenda's, International Bar, Martha, Two Robbers, Bok Ba
+          </StayLink>
+          <StayLink title="Things To Do" href="" label="Open Map" align="right">
+            Philadelphia Museum of Art, Franklin Institute, Schuylkill River
+            Trail, The Barnes Foundation, Wissahickon, Eastern State
+            Penitentiary
+          </StayLink>
         </div>
         <Image
           src="/city.svg"

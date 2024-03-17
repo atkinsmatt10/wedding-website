@@ -51,7 +51,7 @@ type AnimatedScrableProps = {
 export default function AnimatedScrable({ variant }: AnimatedScrableProps) {
   const animate = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref);
+  const inView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (inView) {
