@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,46 +15,77 @@ import {
 } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
 import { Textarea } from './ui/textarea';
+import { useToast } from './ui/use-toast';
 
 const FormSchema = z.object({
-  username: z.string().min(2, {
+  fullname: z.string().min(3, {
     message: 'Username must be at least 2 characters.',
   }),
-  type: z.enum(['all', 'mentions', 'none'], {
-    required_error: 'You need to select a notification type.',
+  email: z.string().email('Please enter a valid email address'),
+  will_attend_wedding: z.enum(['yes', 'no'], {
+    required_error: 'Please confirm your assistance to the wedding',
   }),
+  will_attend_fnight: z.enum(['yes', 'no'], {
+    required_error: 'Please confirm your assistance to the friday night',
+  }),
+  recommended_song: z.string().optional(),
+  comments: z.string().optional(),
 });
 
+type FormFields = {
+  fullname: string;
+  email: string;
+  will_attend_wedding: 'yes' | 'no';
+  will_attend_fnight: 'yes' | 'no';
+  recommended_song?: string;
+  comments?: string;
+};
+
 export function RSVPForm() {
+  const { toast } = useToast();
+  async function submit(params: FormFields) {
+    ('use server');
+    const data = new FormData();
+    Object.keys(params).forEach((key) => {
+      data.append(key, params[key as keyof FormFields] as string);
+    });
+    const APP_URL = `https://script.google.com/macros/s/AKfycbxw07nrSL8AmTbgU-u-AWtrardWTUqq4g2hrw8lIgiQW1lDG7lHOzNBeTAiKPhXTmzJ/exec`;
+    const request = await fetch(APP_URL, {
+      method: 'POST',
+      body: data,
+    });
+    const resp = await request.json();
+    console.log({ resp });
+  }
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: '',
+      fullname: '',
+      email: '',
+      will_attend_wedding: 'yes',
+      will_attend_fnight: 'yes',
+      recommended_song: '',
+      comments: '',
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  const handleSubmit = async (data: FormFields) => {
+    await submit(data);
+    form.reset();
+    toast({ description: 'Thank you for confirming your attendance!' });
+  };
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="max-w-lg mx-auto space-y-4"
       >
         <FormField
           control={form.control}
-          name="username"
+          name="fullname"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Full Name</FormLabel>
@@ -66,13 +96,13 @@ export function RSVPForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email Address</FormLabel>
@@ -83,13 +113,13 @@ export function RSVPForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="type"
+          name="will_attend_wedding"
           render={({ field }) => (
             <FormItem className="flex items-center justify-between w-full max-w-xs">
               <FormLabel>Will we see you there?</FormLabel>
@@ -101,7 +131,7 @@ export function RSVPForm() {
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="all" hidden />
+                      <RadioGroupItem value="yes" />
                     </FormControl>
                     <FormLabel className="font-normal border border-light-gray py-2 px-3">
                       Yes
@@ -109,7 +139,7 @@ export function RSVPForm() {
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="mentions" hidden />
+                      <RadioGroupItem value="no" />
                     </FormControl>
                     <FormLabel className="font-normal border border-light-gray py-2 px-3">
                       No
@@ -117,13 +147,13 @@ export function RSVPForm() {
                   </FormItem>
                 </RadioGroup>
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="type"
+          name="will_attend_fnight"
           render={({ field }) => (
             <FormItem className="flex items-center justify-between w-full max-w-xs">
               <FormLabel>Will you attend Friday Night?</FormLabel>
@@ -135,7 +165,7 @@ export function RSVPForm() {
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="all" hidden />
+                      <RadioGroupItem value="yes" />
                     </FormControl>
                     <FormLabel className="font-normal border border-light-gray py-2 px-3">
                       Yes
@@ -143,7 +173,7 @@ export function RSVPForm() {
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="mentions" hidden />
+                      <RadioGroupItem value="no" />
                     </FormControl>
                     <FormLabel className="font-normal border border-light-gray py-2 px-3">
                       No
@@ -151,13 +181,13 @@ export function RSVPForm() {
                   </FormItem>
                 </RadioGroup>
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="username"
+          name="recommended_song"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Recomend a song</FormLabel>
@@ -168,13 +198,13 @@ export function RSVPForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="username"
+          name="comments"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Comments</FormLabel>
@@ -185,7 +215,7 @@ export function RSVPForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
         />

@@ -20,7 +20,7 @@ import ScheduleBox from '@/components/schedule-box';
 
 export default function Home() {
   return (
-    <main role="main">
+    <div role="main">
       <Hero />
       <section className="relative px-5">
         <div className="absolute left-0 top-0 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
@@ -208,6 +208,6 @@ export default function Home() {
         <Heading>You’re Invited!</Heading>
         <RSVPForm />
       </section>
-    </main>
+    </div>
   );
 }
