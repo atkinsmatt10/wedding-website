@@ -129,19 +129,19 @@ export function RSVPForm() {
                   defaultValue={field.value}
                   className="flex items-center"
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 space-y-0 [&+label]:[&_input:checked]:bg-light-gray">
                     <FormControl>
-                      <RadioGroupItem value="yes" />
+                      <RadioGroupItem value="yes" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
                       Yes
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 space-y-0 [&+label]:[&_input:checked]:bg-light-gray">
                     <FormControl>
-                      <RadioGroupItem value="no" />
+                      <RadioGroupItem value="no" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
                       No
                     </FormLabel>
                   </FormItem>
@@ -163,19 +163,19 @@ export function RSVPForm() {
                   defaultValue={field.value}
                   className="flex items-center"
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 space-y-0 [&+label]:[&_input:checked]:bg-light-gray">
                     <FormControl>
-                      <RadioGroupItem value="yes" />
+                      <RadioGroupItem value="yes" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
                       Yes
                     </FormLabel>
                   </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
+                  <FormItem className="flex items-center space-x-3 space-y-0 [&+label]:[&_input:checked]:bg-light-gray">
                     <FormControl>
-                      <RadioGroupItem value="no" />
+                      <RadioGroupItem value="no" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
                       No
                     </FormLabel>
                   </FormItem>
