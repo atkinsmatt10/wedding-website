@@ -20,7 +20,7 @@ import { useToast } from './ui/use-toast';
 
 const FormSchema = z.object({
   fullname: z.string().min(3, {
-    message: 'Username must be at least 2 characters.',
+    message: 'Please enter your full name',
   }),
   email: z.string().email('Please enter a valid email address'),
   will_attend_wedding: z.enum(['yes', 'no'], {
@@ -64,8 +64,8 @@ export function RSVPForm() {
     defaultValues: {
       fullname: '',
       email: '',
-      will_attend_wedding: 'yes',
-      will_attend_fnight: 'yes',
+      will_attend_wedding: undefined,
+      will_attend_fnight: undefined,
       recommended_song: '',
       comments: '',
     },
@@ -121,7 +121,7 @@ export function RSVPForm() {
           control={form.control}
           name="will_attend_wedding"
           render={({ field }) => (
-            <FormItem className="flex items-center justify-between w-full max-w-xs">
+            <FormItem className="flex flex-wrap items-center justify-between w-full max-w-xs">
               <FormLabel>Will we see you there?</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -133,7 +133,7 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="yes" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
                       Yes
                     </FormLabel>
                   </FormItem>
@@ -141,13 +141,13 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="no" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
                       No
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
-              <FormMessage className="text-xs text-[red]" />
+              <FormMessage className="flex-1 text-xs text-[red]" />
             </FormItem>
           )}
         />
@@ -155,7 +155,7 @@ export function RSVPForm() {
           control={form.control}
           name="will_attend_fnight"
           render={({ field }) => (
-            <FormItem className="flex items-center justify-between w-full max-w-xs">
+            <FormItem className="flex flex-wrap items-center justify-between w-full max-w-xs">
               <FormLabel>Will you attend Friday Night?</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -167,7 +167,7 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="yes" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
                       Yes
                     </FormLabel>
                   </FormItem>
@@ -175,13 +175,13 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="no" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer">
+                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
                       No
                     </FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>
-              <FormMessage className="text-xs text-[red]" />
+              <FormMessage className="flex-1 text-xs text-[red]" />
             </FormItem>
           )}
         />
