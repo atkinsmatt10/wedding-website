@@ -1,17 +1,9 @@
 import Image from 'next/image';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import FAQ from '@/components/faq';
 import Heading from '@/components/heading';
 import Carousel from '@/components/carousel';
 import { RSVPForm } from '@/components/rsvp';
-import AnimatedScrable from '@/components/scrable';
 import Divider from '@/components/divider';
 import AnimatedFlower from '@/components/flower';
 import Hero from '@/components/hero';
@@ -221,7 +213,7 @@ export default function Home() {
       </section>
       <Divider />
       <section id="rsvp" className="relative pb-32 px-5">
-        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28" />
+        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-10 lg:left-1/2 lg:-translate-x-96 -top-28" />
         <div className="absolute right-0 bottom-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
         <h3 className="font-bold text-xl text-gold text-center">RSVP</h3>
         <Heading>You’re Invited!</Heading>
