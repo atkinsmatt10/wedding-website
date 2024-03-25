@@ -31,7 +31,7 @@ export default function Home() {
             description="Join us at Museum of the American Revolution, 101 South
               Third Street, Philadelphia, PA"
             location="Lilah 1601 N Front St, Philadelphia, PA 19122"
-            date="June 1, 2024 17:30"
+            start="June 1, 2024 17:30"
           />
         </div>
         <div className="flex items-center justify-center">
@@ -135,7 +135,7 @@ export default function Home() {
               Third Street, Philadelphia, PA"
               location="Museum of the American Revolution, 101 South
               Third Street, Philadelphia, PA"
-              date="May 31, 2024 18:00"
+              start="May 31, 2024 18:00"
             />
           </div>
         </div>
