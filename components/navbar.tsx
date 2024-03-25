@@ -38,7 +38,7 @@ export default function Navbar({ isFixed }: { isFixed: boolean }) {
     >
       <nav
         className={cn(
-          'flex items-center whitespace-nowrap justify-between lg:justify-center gap-4 lg:gap-12 text-white py-0 px-4 snap-x overflow-x-auto',
+          'flex items-center whitespace-nowrap justify-between lg:justify-center w-full gap-4 lg:gap-12 text-white py-0 px-4 snap-x overflow-x-auto',
           isFixed &&
             'ring-1 ring-light-gray/50 bg-white/50 backdrop-blur-md rounded-full text-gray text-sm'
         )}

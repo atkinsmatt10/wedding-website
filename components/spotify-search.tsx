@@ -54,6 +54,7 @@ export default function SpotifySearch({
   disabled,
 }: SpotifySearchT) {
   const [songResults, setSongResults] = useState<SongResults>([]);
+  const [open, setOpen] = useState(false);
 
   const onSearch = debounce(async (query: string) => {
     const req = await fetch(
@@ -84,7 +85,7 @@ export default function SpotifySearch({
   return (
     <FormItem className="flex flex-col">
       <FormLabel>Recomend a song</FormLabel>
-      <Popover>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <FormControl>
             <Button
@@ -96,9 +97,30 @@ export default function SpotifySearch({
                 !field.value && 'text-gray/60'
               )}
             >
-              {field.value
-                ? songResults.find(({ value }) => value === field.value)?.label
-                : `Search for a song you'd like to be played at the wedding`}
+              {field.value ? (
+                <div className="flex items-center gap-4 truncate whitespace-nowrap -ml-2">
+                  <Image
+                    src={
+                      songResults.find(({ value }) => value === field.value)
+                        ?.image as string
+                    }
+                    alt=""
+                    width={30}
+                    height={30}
+                    className="rounded"
+                  />
+                  <span className="truncate whitespace-nowrap">
+                    {
+                      songResults.find(({ value }) => value === field.value)
+                        ?.label
+                    }
+                  </span>
+                </div>
+              ) : (
+                <span className="truncate whitespace-nowrap">
+                  Search for a song you'd like to be played at the wedding
+                </span>
+              )}
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </FormControl>
@@ -119,15 +141,16 @@ export default function SpotifySearch({
                     className="gap-2"
                     onSelect={() => {
                       form.setValue('recommended_song', value);
+                      setOpen(false);
                     }}
                   >
-                    <Check
-                      className={cn(
-                        'mr-2 h-4 w-4',
-                        value === field.value ? 'opacity-100' : 'opacity-0'
-                      )}
+                    <Image
+                      src={image}
+                      alt={label}
+                      width={30}
+                      height={30}
+                      className="rounded"
                     />
-                    <Image src={image} alt={label} width={30} height={30} />
                     {label}
                   </CommandItem>
                 ))}
