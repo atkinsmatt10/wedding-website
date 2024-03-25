@@ -29,7 +29,7 @@ export default function Hero() {
 
   return (
     <header
-      className="relative w-full h-[80vh] xl:h-[120vh] overflow-hidden"
+      className="relative w-full h-[65vh] xl:h-[120vh] overflow-hidden"
       id="top"
     >
       <motion.img
