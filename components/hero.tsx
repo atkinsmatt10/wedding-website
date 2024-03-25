@@ -1,9 +1,8 @@
 'use client';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import Countdown from '@/components/countdown';
 import { Meow_Script } from 'next/font/google';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import Navbar from './navbar';
 
@@ -42,7 +41,7 @@ export default function Hero() {
         <h1
           className={cn(
             'text-center text-gold text-5xl xl:text-[180px] mb-5',
-            meow.className
+            meow.className,
           )}
         >
           Nicole & Matt

@@ -11,7 +11,7 @@ import {
 } from './ui/form';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { Button } from './ui/button';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { ChevronsUpDown } from 'lucide-react';
 import {
   Command,
   CommandEmpty,
@@ -66,7 +66,7 @@ export default function SpotifySearch({
             '0009ce0253msh32334e191d17418p11f49fjsn73c3d26a8c57',
           'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
         },
-      }
+      },
     );
     const res = (await req.json()) as APIResults;
     console.log(res);
@@ -94,7 +94,7 @@ export default function SpotifySearch({
               disabled={disabled}
               className={cn(
                 'w-full justify-between border-light-gray rounded-lg',
-                !field.value && 'text-gray/60'
+                !field.value && 'text-gray/60',
               )}
             >
               {field.value ? (
