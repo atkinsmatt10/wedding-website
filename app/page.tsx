@@ -18,6 +18,7 @@ import Hero from '@/components/hero';
 import StayLink from '@/components/stay-link';
 import ScheduleBox from '@/components/schedule-box';
 import { config } from '@/config';
+import SaveToCalendar from '@/components/save-to-calendar';
 
 export default function Home() {
   return (
@@ -33,16 +34,13 @@ export default function Home() {
             At Lilah 1601 N Front St, <br />
             Philadelphia, PA 19122
           </p>
-          <Select>
-            <SelectTrigger className="w-[200px] border-light-gray text-sm">
-              <SelectValue placeholder="Save to your calendar" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Google Calendar</SelectItem>
-              <SelectItem value="dark">Apple Calendar</SelectItem>
-              <SelectItem value="system">Outlook</SelectItem>
-            </SelectContent>
-          </Select>
+          <SaveToCalendar
+            title="Nicole & Matt's Wedding"
+            description="Join us at Museum of the American Revolution, 101 South
+              Third Street, Philadelphia, PA"
+            location="Lilah 1601 N Front St, Philadelphia, PA 19122"
+            date="June 1, 2024 17:30"
+          />
         </div>
         <div className="flex items-center justify-center">
           <iframe
@@ -139,16 +137,14 @@ export default function Home() {
               Please join us at Museum of the American Revolution, 101 South
               Third Street, Philadelphia, PA
             </p>
-            <Select>
-              <SelectTrigger className="w-[200px] border-light-gray text-sm mx-auto lg:ml-0">
-                <SelectValue placeholder="Save to your calendar" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Google Calendar</SelectItem>
-                <SelectItem value="dark">Apple Calendar</SelectItem>
-                <SelectItem value="system">Outlook</SelectItem>
-              </SelectContent>
-            </Select>
+            <SaveToCalendar
+              title="After Party"
+              description="Join us at Museum of the American Revolution, 101 South
+              Third Street, Philadelphia, PA"
+              location="Museum of the American Revolution, 101 South
+              Third Street, Philadelphia, PA"
+              date="May 31, 2024 18:00"
+            />
           </div>
         </div>
       </section>
