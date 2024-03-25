@@ -26,7 +26,7 @@ export default function SaveToCalendar({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="w-[200px] border-light-gray text-sm rounded-lg border py-3 px-auto relative z-50">
+      <DropdownMenuTrigger className="w-[200px] bg-white border-light-gray text-sm rounded-lg border py-3 px-auto relative z-50">
         Save to your calendar
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[200px] border-light-gray [&_a]:cursor-pointer">

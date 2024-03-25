@@ -59,7 +59,7 @@ export default function Hero() {
           <a href="#rsvp">RSVP</a>
         </nav>
       </div>
-      <div className="lg:mt-32">
+      <div className="mt-32">
         <h1
           className={cn(
             'text-center text-gold text-5xl xl:text-[180px] mb-5',
