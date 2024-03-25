@@ -17,6 +17,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from './ui/use-toast';
+import SpotifySearch from './spotify-search';
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
 const FormSchema = z.object({
   fullname: z.string().min(3, {
@@ -33,7 +36,7 @@ const FormSchema = z.object({
   comments: z.string().optional(),
 });
 
-type FormFields = {
+export type FormFields = {
   fullname: string;
   email: string;
   will_attend_wedding: 'yes' | 'no';
@@ -43,6 +46,7 @@ type FormFields = {
 };
 
 export function RSVPForm() {
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   async function submit(params: FormFields) {
     ('use server');
@@ -72,8 +76,10 @@ export function RSVPForm() {
   });
 
   const handleSubmit = async (data: FormFields) => {
+    setIsLoading(true);
     await submit(data);
     form.reset();
+    setIsLoading(false);
     toast({ description: 'Thank you for confirming your attendance!' });
   };
 
@@ -93,6 +99,7 @@ export function RSVPForm() {
                 <Input
                   placeholder="Enter your name"
                   className="border-light-gray"
+                  disabled={isLoading}
                   {...field}
                 />
               </FormControl>
@@ -110,6 +117,7 @@ export function RSVPForm() {
                 <Input
                   placeholder="Enter your email address"
                   className="border-light-gray"
+                  disabled={isLoading}
                   {...field}
                 />
               </FormControl>
@@ -128,6 +136,7 @@ export function RSVPForm() {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                   className="flex items-center"
+                  disabled={isLoading}
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0 [&+label]:[&_input:checked]:bg-light-gray">
                     <FormControl>
@@ -162,6 +171,7 @@ export function RSVPForm() {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                   className="flex items-center"
+                  disabled={isLoading}
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0 [&+label]:[&_input:checked]:bg-light-gray">
                     <FormControl>
@@ -189,22 +199,13 @@ export function RSVPForm() {
           control={form.control}
           name="recommended_song"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Recomend a song</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Enter a song you'd like to be played at the wedding"
-                  className="border-light-gray"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage className="text-xs text-[red]" />
-            </FormItem>
+            <SpotifySearch field={field} form={form} disabled={isLoading} />
           )}
         />
         <FormField
           control={form.control}
           name="comments"
+          disabled={isLoading}
           render={({ field }) => (
             <FormItem>
               <FormLabel>Comments</FormLabel>
@@ -219,7 +220,10 @@ export function RSVPForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit your RSVP</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+          Submit your RSVP
+        </Button>
       </form>
     </Form>
   );
