@@ -17,6 +17,7 @@ import AnimatedFlower from '@/components/flower';
 import Hero from '@/components/hero';
 import StayLink from '@/components/stay-link';
 import ScheduleBox from '@/components/schedule-box';
+import { config } from '@/config';
 
 export default function Home() {
   return (
@@ -161,15 +162,29 @@ export default function Home() {
           favorite spots in Philly.
         </p>
         <div className="mt-20 max-w-7xl mx-auto grid place-items-center gap-12">
-          <StayLink title="Lodging" href="" label="Book a Room">
+          <StayLink
+            title="Lodging"
+            href={config.links.lodging}
+            label="Book a Room"
+          >
             There will be shuttles with limited seating available from the
             Hilton Penns Landing & Kimpton Monico to the event and back.
           </StayLink>
-          <StayLink title="Eat & Drink" href="" label="Open Map" align="middle">
+          <StayLink
+            title="Eat & Drink"
+            href={config.links.eatdrink}
+            label="Open Map"
+            align="middle"
+          >
             Wm. Mulherin’s Sons, Lark, Middle Child, LMNO, Gilda, Johnny
             Brenda's, International Bar, Martha, Two Robbers, Bok Ba
           </StayLink>
-          <StayLink title="Things To Do" href="" label="Open Map" align="right">
+          <StayLink
+            title="Things To Do"
+            href={config.links.thingstodo}
+            label="Open Map"
+            align="right"
+          >
             Philadelphia Museum of Art, Franklin Institute, Schuylkill River
             Trail, The Barnes Foundation, Wissahickon, Eastern State
             Penitentiary
@@ -198,7 +213,15 @@ export default function Home() {
           You know what they say — your presence is a gift! However, if you want
           to give us a present, we’re registered at Zola.
         </p>
-        <Button variant="default">Give a Gift</Button>
+        <Button variant="default" asChild>
+          <a
+            href={config.links.registry}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Give a Gift
+          </a>
+        </Button>
       </section>
       <Divider />
       <section id="rsvp" className="relative pb-32 px-5">
