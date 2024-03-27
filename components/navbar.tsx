@@ -19,7 +19,7 @@ function NavLink({
       className={cn(
         'py-1 px-3 rounded-full',
         !isLogo &&
-          'hover:bg-light-gray/40 hover:transition-color hover:backdrop-blur',
+          'hover:bg-gold/30 hover:transition-color hover:backdrop-blur',
         hideOnMobile && 'hidden lg:block',
       )}
     >

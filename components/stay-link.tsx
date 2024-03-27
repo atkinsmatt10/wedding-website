@@ -29,7 +29,10 @@ export default function StayLink({
 
   return (
     <motion.div
-      className={cn('xl:max-w-xs text-center', variants[align])}
+      className={cn(
+        'xl:max-w-xs max-w-lg mx-auto w-full text-center',
+        variants[align],
+      )}
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
       transition={{ delay: 0.5 }}

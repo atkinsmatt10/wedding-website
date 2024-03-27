@@ -32,7 +32,10 @@ export default function ScheduleBox({
 
   return (
     <motion.div
-      className={cn('xl:max-w-sm relative', variants[variant])}
+      className={cn(
+        'xl:max-w-sm w-full max-w-2xl mx-auto relative',
+        variants[variant],
+      )}
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
       transition={{ delay: 0.5 }}

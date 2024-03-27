@@ -6,6 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type SaveToCalendarT = {
   title: string;
@@ -20,11 +23,18 @@ export default function SaveToCalendar({
   start,
 }: SaveToCalendarT) {
   const event = { title, description, start, end: start, location };
+  const [isOpened, setIsOpened] = useState(false);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="w-[200px] bg-white border-light-gray text-sm rounded-lg border py-3 px-auto relative z-50">
+    <DropdownMenu onOpenChange={setIsOpened}>
+      <DropdownMenuTrigger className="bg-white border-light-gray text-sm rounded-lg border px-3 py-3 px-auto relative z-50 inline-flex items-center gap-4">
         Save to your calendar
+        <ChevronDown
+          className={cn(
+            'w-4 h-4 transition-transform duration-150 ease-out',
+            isOpened ? '-rotate-180' : 'rotate-0',
+          )}
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[200px] border-light-gray [&_a]:cursor-pointer [&_a]:py-2">
         <DropdownMenuItem asChild>
