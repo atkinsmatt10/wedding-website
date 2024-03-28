@@ -7,7 +7,11 @@ import {
 
 export default function FAQ() {
   return (
-    <Accordion type="single" collapsible className="ml-6 max-w-6xl xl:mx-auto">
+    <Accordion
+      type="single"
+      collapsible
+      className="pl-6 xl:max-w-6xl max-w-2xl w-full mx-auto mt-24"
+    >
       {data.map(({ q, a }, index) => (
         <AccordionItem
           key={`item-${index}`}

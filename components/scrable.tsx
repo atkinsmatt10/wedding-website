@@ -64,7 +64,7 @@ export default function AnimatedScrable({ variant }: AnimatedScrableProps) {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       viewBox="0 0 800 400"
-      className={cn('hidden lg:block', scrableVars[variant].position)}
+      className={cn('hidden xl:block', scrableVars[variant].position)}
       ref={ref}
     >
       <motion.path
