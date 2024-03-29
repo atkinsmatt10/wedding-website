@@ -33,7 +33,7 @@ export default function ScheduleBox({
   return (
     <motion.div
       className={cn(
-        'xl:max-w-sm w-full max-w-2xl mx-auto relative',
+        'relative mx-auto w-full max-w-2xl xl:max-w-sm',
         variants[variant],
       )}
       initial={{ opacity: 0 }}
@@ -41,10 +41,10 @@ export default function ScheduleBox({
       transition={{ delay: 0.5 }}
       ref={ref}
     >
-      <h4 className="text-lg font-bold before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
+      <h4 className="text-lg font-bold before:absolute before:-ml-4 before:-translate-x-full before:content-['❤︎']">
         {title}
       </h4>
-      <span className="text-sm font-bold text-gold mb-4 block">{time}</span>
+      <span className="mb-4 block text-sm font-bold text-gold">{time}</span>
       <p>{children}</p>
       {variant < 5 ? <AnimatedScrable variant={variant} /> : null}
     </motion.div>

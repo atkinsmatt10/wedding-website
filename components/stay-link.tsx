@@ -30,7 +30,7 @@ export default function StayLink({
   return (
     <motion.div
       className={cn(
-        'xl:max-w-xs max-w-lg mx-auto w-full text-center',
+        'mx-auto w-full max-w-lg text-center xl:max-w-xs',
         variants[align],
       )}
       initial={{ opacity: 0 }}
@@ -38,8 +38,8 @@ export default function StayLink({
       transition={{ delay: 0.5 }}
       ref={ref}
     >
-      <h3 className="font-bold text-xl mb-2">{title}</h3>
-      <p className="text-sm mb-4">{children}</p>
+      <h3 className="mb-2 text-xl font-bold">{title}</h3>
+      <p className="mb-4 text-sm">{children}</p>
       <Button variant="default" asChild>
         <a href={href} target="_blank" rel="noopener noreferrer">
           {label}

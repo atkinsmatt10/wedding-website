@@ -5,7 +5,7 @@ export default function Divider() {
       height="22"
       viewBox="0 0 318 22"
       fill="none"
-      className="w-32 xl:w-auto mx-auto mt-12 mb-3 lg:mt-24 lg:mb-6"
+      className="mx-auto mb-3 mt-12 w-32 lg:mb-6 lg:mt-24 xl:w-auto"
     >
       <g clipPath="url(#clip0_173_43251)">
         <path

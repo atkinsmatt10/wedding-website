@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function Carousel() {
   return (
-    <div className="my-12 w-full inline-flex flex-nowrap overflow-hidden">
-      <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
+    <div className="my-12 inline-flex w-full flex-nowrap overflow-hidden">
+      <ul className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
         {Array.from({ length: 9 }).map((_, index) => (
           <li key={`item-${index}`}>
             <Image
@@ -16,7 +16,7 @@ export default function Carousel() {
         ))}
       </ul>
       <ul
-        className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+        className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8"
         aria-hidden="true"
       >
         {Array.from({ length: 9 }).map((_, index) => (

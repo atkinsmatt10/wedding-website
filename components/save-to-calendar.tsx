@@ -27,11 +27,11 @@ export default function SaveToCalendar({
 
   return (
     <DropdownMenu onOpenChange={setIsOpened}>
-      <DropdownMenuTrigger className="bg-white border-light-gray text-sm rounded-lg border px-3 py-3 px-auto relative z-50 inline-flex items-center gap-4">
+      <DropdownMenuTrigger className="px-auto relative z-50 inline-flex items-center gap-4 rounded-lg border border-light-gray bg-white px-3 py-3 text-sm">
         Save to your calendar
         <ChevronDown
           className={cn(
-            'w-4 h-4 transition-transform duration-150 ease-out',
+            'h-4 w-4 transition-transform duration-150 ease-out',
             isOpened ? '-rotate-180' : 'rotate-0',
           )}
         />

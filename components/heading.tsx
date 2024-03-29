@@ -12,7 +12,7 @@ export default function Heading({ children }: Heading) {
   return (
     <h2
       className={cn(
-        'text-4xl lg:text-6xl xl:text-7xl mb-8 text-center leading-tight',
+        'mb-8 text-center text-4xl leading-tight lg:text-6xl xl:text-7xl',
         meow.className,
       )}
     >

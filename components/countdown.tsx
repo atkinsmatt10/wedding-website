@@ -5,8 +5,8 @@ const end = 1717221600000;
 
 function Counter({ label, value }: { label: string; value: number }) {
   return (
-    <div className="flex flex-col text-white items-center justify-center gap-1">
-      <strong className="text-lg lg:text-3xl xl:text-5xl font-bold">
+    <div className="flex flex-col items-center justify-center gap-1 text-white">
+      <strong className="text-lg font-bold lg:text-3xl xl:text-5xl">
         {('0' + value).slice(-2)}
       </strong>
       <span className="text-xs lg:text-sm xl:text-base">{label}</span>
@@ -38,7 +38,7 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-4 lg:gap-10 -mt-5 xl:-mt-12">
+    <div className="-mt-5 flex items-center justify-center gap-4 lg:gap-10 xl:-mt-12">
       <Counter label="Days" value={countdown.days} />
       <Counter label="Hours" value={countdown.hours} />
       <Counter label="Minutes" value={countdown.minutes} />

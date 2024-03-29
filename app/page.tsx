@@ -17,12 +17,12 @@ export default function Home() {
     <div role="main">
       <Hero />
       <section className="relative px-5">
-        <div className="absolute left-0 top-0 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
+        <div className="absolute left-0 top-0 -z-10 h-48 w-48 rounded-full bg-gold blur-[80px]" />
         <div className="flex flex-col items-center justify-center py-12">
-          <h2 className="text-2xl xl:text-4xl font-bold mb-2">
+          <h2 className="mb-2 text-2xl font-bold xl:text-4xl">
             Saturday, June 1, 2024
           </h2>
-          <p className="text-sm mb-6 font-semibold">
+          <p className="mb-6 text-sm font-semibold">
             At Lilah 1601 N Front St, <br />
             Philadelphia, PA 19122
           </p>
@@ -39,7 +39,7 @@ export default function Home() {
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d764.3821011451081!2d-75.1341665!3d39.9742954!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c955cc3e2d19%3A0x5d1dc5c0ca2f84b!2sLilah!5e0!3m2!1ses-419!2smx!4v1709532845513!5m2!1ses-419!2smx"
             width="600"
             height="450"
-            className="aspect-video w-full h-auto max-w-3xl"
+            className="aspect-video h-auto w-full max-w-3xl"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -47,11 +47,11 @@ export default function Home() {
         </div>
       </section>
       <Divider />
-      <section id="our-story" className="py-12 relative">
-        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-10 -top-48 rotate-180" />
-        <div className="max-w-3xl mx-auto text-center px-5">
+      <section id="our-story" className="relative py-12">
+        <AnimatedFlower className="absolute -top-48 right-10 mx-auto mb-6 mt-20 rotate-180" />
+        <div className="mx-auto max-w-3xl px-5 text-center">
           <Heading>How it all began</Heading>
-          <p className="text-xl xl:text-3xl mb-4">
+          <p className="mb-4 text-xl xl:text-3xl">
             Nicole Gasser and Matt Atkins first crossed paths in 2016 at
             McGillians in Philadelphia during Nicole's sister's birthday party.
             Matt was immediately taken with Nicole's charm. They exchanged
@@ -68,12 +68,12 @@ export default function Home() {
         </div>
         <Carousel />
       </section>
-      <section id="schedule" className="relative py-12 px-5">
-        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-1/2 -translate-x-96 -top-28 rotate-180" />
-        <div className="absolute right-0 top-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
+      <section id="schedule" className="relative px-5 py-12">
+        <AnimatedFlower className="absolute -top-28 left-1/2 mx-auto mb-6 mt-20 -translate-x-96 rotate-180" />
+        <div className="absolute right-0 top-0 -z-10 h-48 w-48 rounded-full bg-gold blur-[80px]" />
+        <div className="absolute left-0 top-1/2 -z-10 h-48 w-48 -translate-y-1/2 rounded-full bg-gold blur-[80px]" />
         <Heading>The Wedding Day</Heading>
-        <div className="grid place-items-center gap-12 xl:gap-40 mt-20 ml-6 xl:ml-auto">
+        <div className="ml-6 mt-20 grid place-items-center gap-12 xl:ml-auto xl:gap-40">
           <ScheduleBox
             title="Welcome to Lilah"
             time="Arrive by 5:30 pm"
@@ -112,7 +112,7 @@ export default function Home() {
             going!
           </ScheduleBox>
         </div>
-        <div className="flex items-center text-center lg:text-left justify-center gap-8 py-8 mt-28 relative before:absolute before:h-full before:border-y-4 before:border-gold before:w-32">
+        <div className="relative mt-28 flex items-center justify-center gap-8 py-8 text-center before:absolute before:h-full before:w-32 before:border-y-4 before:border-gold lg:text-left">
           <Image
             src="/museum.svg"
             width={248}
@@ -122,7 +122,7 @@ export default function Home() {
           />
           <div className="max-w-sm">
             <h4 className="text-xl font-bold">After Party</h4>
-            <span className="text-sm font-bold text-gold mb-4 block">
+            <span className="mb-4 block text-sm font-bold text-gold">
               Friday May 31st, at 6:00 pm
             </span>
             <p className="mb-4">
@@ -141,15 +141,15 @@ export default function Home() {
         </div>
       </section>
       <Divider />
-      <section id="stay" className="py-16 relative px-5">
-        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute right-12 -top-28 rotate-180" />
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 rounded-full bg-gold w-56 h-56 blur-[100px]" />
+      <section id="stay" className="relative px-5 py-16">
+        <AnimatedFlower className="absolute -top-28 right-12 mx-auto mb-6 mt-20 rotate-180" />
+        <div className="absolute left-1/2 top-0 -z-10 h-56 w-56 -translate-x-1/2 rounded-full bg-gold blur-[100px]" />
         <Heading>Your Stay in Philadelphia</Heading>
-        <p className="text-center max-w-md mx-auto">
+        <p className="mx-auto max-w-md text-center">
           Turn your weekend into an adventure! Explore nearby locations and our
           favorite spots in Philly.
         </p>
-        <div className="mt-20 max-w-7xl mx-auto grid place-items-center gap-12">
+        <div className="mx-auto mt-20 grid max-w-7xl place-items-center gap-12">
           <StayLink
             title="Lodging"
             href={config.links.lodging}
@@ -183,21 +183,21 @@ export default function Home() {
           width={692}
           height={200}
           alt=""
-          className="xl:absolute left-0 -bottom-8"
+          className="-bottom-8 left-0 xl:absolute"
         />
       </section>
       <Divider />
-      <section id="faq" className="py-12 relative px-5">
-        <div className="absolute left-0 top-40 -z-10 rounded-full bg-gold w-48 h-48 blur-[80px]" />
+      <section id="faq" className="relative px-5 py-12">
+        <div className="absolute left-0 top-40 -z-10 h-48 w-48 rounded-full bg-gold blur-[80px]" />
         <Heading>Frequently Asked Questions</Heading>
         <FAQ />
       </section>
       <section
         id="registry"
-        className="flex flex-col items-center justify-center py-12 px-5"
+        className="flex flex-col items-center justify-center px-5 py-12"
       >
         <Heading>Our Registry</Heading>
-        <p className="max-w-md text-center mb-6">
+        <p className="mb-6 max-w-md text-center">
           You know what they say — your presence is a gift! However, if you want
           to give us a present, we’re registered at Zola.
         </p>
@@ -212,10 +212,10 @@ export default function Home() {
         </Button>
       </section>
       <Divider />
-      <section id="rsvp" className="relative pb-32 px-5">
-        <AnimatedFlower className="mt-20 mb-6 mx-auto absolute left-10 lg:left-1/2 lg:-translate-x-96 -top-28" />
-        <div className="absolute right-0 bottom-0 rounded-full -z-10 bg-gold w-48 h-48 blur-[80px]" />
-        <h3 className="font-bold text-xl text-gold text-center">RSVP</h3>
+      <section id="rsvp" className="relative px-5 pb-32">
+        <AnimatedFlower className="absolute -top-28 left-10 mx-auto mb-6 mt-20 lg:left-1/2 lg:-translate-x-96" />
+        <div className="absolute bottom-0 right-0 -z-10 h-48 w-48 rounded-full bg-gold blur-[80px]" />
+        <h3 className="text-center text-xl font-bold text-gold">RSVP</h3>
         <Heading>You’re Invited!</Heading>
         <RSVPForm />
       </section>

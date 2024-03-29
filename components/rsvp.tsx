@@ -87,7 +87,7 @@ export function RSVPForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="max-w-lg mx-auto space-y-4"
+        className="mx-auto max-w-lg space-y-4"
       >
         <FormField
           control={form.control}
@@ -129,7 +129,7 @@ export function RSVPForm() {
           control={form.control}
           name="will_attend_wedding"
           render={({ field }) => (
-            <FormItem className="flex flex-wrap items-center justify-between w-full max-w-xs">
+            <FormItem className="flex w-full max-w-xs flex-wrap items-center justify-between">
               <FormLabel>Will we see you there?</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -142,7 +142,7 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="yes" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
+                    <FormLabel className="cursor-pointer rounded-lg border border-light-gray px-3 py-2 font-normal">
                       Yes
                     </FormLabel>
                   </FormItem>
@@ -150,7 +150,7 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="no" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
+                    <FormLabel className="cursor-pointer rounded-lg border border-light-gray px-3 py-2 font-normal">
                       No
                     </FormLabel>
                   </FormItem>
@@ -164,7 +164,7 @@ export function RSVPForm() {
           control={form.control}
           name="will_attend_fnight"
           render={({ field }) => (
-            <FormItem className="flex flex-wrap items-center justify-between w-full max-w-xs">
+            <FormItem className="flex w-full max-w-xs flex-wrap items-center justify-between">
               <FormLabel>Will you attend Friday Night?</FormLabel>
               <FormControl>
                 <RadioGroup
@@ -177,7 +177,7 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="yes" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
+                    <FormLabel className="cursor-pointer rounded-lg border border-light-gray px-3 py-2 font-normal">
                       Yes
                     </FormLabel>
                   </FormItem>
@@ -185,7 +185,7 @@ export function RSVPForm() {
                     <FormControl>
                       <RadioGroupItem value="no" hidden />
                     </FormControl>
-                    <FormLabel className="font-normal border border-light-gray py-2 px-3 cursor-pointer rounded-lg">
+                    <FormLabel className="cursor-pointer rounded-lg border border-light-gray px-3 py-2 font-normal">
                       No
                     </FormLabel>
                   </FormItem>

@@ -93,12 +93,12 @@ export default function SpotifySearch({
               role="combobox"
               disabled={disabled}
               className={cn(
-                'w-full justify-between border-light-gray rounded-lg',
+                'w-full justify-between rounded-lg border-light-gray',
                 !field.value && 'text-gray/60',
               )}
             >
               {field.value ? (
-                <div className="flex items-center gap-4 truncate whitespace-nowrap -ml-2">
+                <div className="-ml-2 flex items-center gap-4 truncate whitespace-nowrap">
                   <Image
                     src={
                       songResults.find(({ value }) => value === field.value)
@@ -125,7 +125,7 @@ export default function SpotifySearch({
             </Button>
           </FormControl>
         </PopoverTrigger>
-        <PopoverContent className="w-full p-0 border-light-gray">
+        <PopoverContent className="w-full border-light-gray p-0">
           <Command>
             <CommandInput
               placeholder="Search for a song..."

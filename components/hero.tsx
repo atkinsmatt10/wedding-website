@@ -28,19 +28,19 @@ export default function Hero() {
 
   return (
     <header
-      className="relative w-full h-[65vh] sm:h-[110vh] lg:h-[75vh] xl:h-[85vh] 2xl:h-[120vh] overflow-hidden"
+      className="relative h-[65vh] w-full overflow-hidden sm:h-[110vh] lg:h-[75vh] xl:h-[85vh] 2xl:h-[120vh]"
       id="top"
     >
       <motion.img
         src="/main-hero.jpg"
-        className="absolute -z-10 w-full h-full object-cover object-bottom xl:h-auto sm:top-20 left-0 top-32 xl:top-auto"
+        className="absolute left-0 top-32 -z-10 h-full w-full object-cover object-bottom sm:top-20 xl:top-auto xl:h-auto"
         style={{ y }}
       />
       <Navbar isFixed={isFixed} />
       <div className="mt-8 sm:-mt-4 lg:mt-20 xl:mt-12">
         <h1
           className={cn(
-            'text-center text-gold text-5xl lg:text-[100px] xl:text-[180px] mb-5',
+            'mb-5 text-center text-5xl text-gold lg:text-[100px] xl:text-[180px]',
             meow.className,
           )}
         >

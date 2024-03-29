@@ -10,7 +10,7 @@ export default function FAQ() {
     <Accordion
       type="single"
       collapsible
-      className="pl-6 xl:max-w-6xl max-w-2xl w-full mx-auto mt-24"
+      className="mx-auto mt-24 w-full max-w-2xl pl-6 xl:max-w-6xl"
     >
       {data.map(({ q, a }, index) => (
         <AccordionItem
@@ -18,7 +18,7 @@ export default function FAQ() {
           value={`item-${index}`}
           className="border-none hover:text-gray/80"
         >
-          <AccordionTrigger className="hover:no-underline text-left xl:text-center xl:text-2xl before:content-['❤︎'] before:absolute before:-translate-x-full before:-ml-4">
+          <AccordionTrigger className="text-left before:absolute before:-ml-4 before:-translate-x-full before:content-['❤︎'] hover:no-underline xl:text-center xl:text-2xl">
             {q}
           </AccordionTrigger>
           <AccordionContent className="xl:text-xl">{a}</AccordionContent>

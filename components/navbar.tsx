@@ -17,9 +17,9 @@ function NavLink({
     <a
       href={href}
       className={cn(
-        'py-1 px-3 rounded-full',
+        'rounded-full px-3 py-1',
         !isLogo &&
-          'hover:bg-gold/30 hover:transition-color hover:backdrop-blur',
+          'hover:transition-color hover:bg-gold/30 hover:backdrop-blur',
         hideOnMobile && 'hidden lg:block',
       )}
     >
@@ -32,15 +32,15 @@ export default function Navbar({ isFixed }: { isFixed: boolean }) {
   return (
     <div
       className={cn(
-        'w-full lg:w-auto mt-4',
-        isFixed && 'fixed top-4 mt-0 px-2 z-[100] left-1/2 -translate-x-1/2',
+        'mt-4 w-full lg:w-auto',
+        isFixed && 'fixed left-1/2 top-4 z-[100] mt-0 -translate-x-1/2 px-2',
       )}
     >
       <nav
         className={cn(
-          'flex items-center whitespace-nowrap justify-between lg:justify-center w-full gap-4 lg:gap-12 text-white py-0 px-4 snap-x overflow-x-auto',
+          'flex w-full snap-x items-center justify-between gap-4 overflow-x-auto whitespace-nowrap px-4 py-0 text-white lg:justify-center lg:gap-12',
           isFixed &&
-            'ring-1 ring-light-gray/50 bg-white/50 backdrop-blur-md rounded-full text-gray text-sm',
+            'rounded-full bg-white/50 text-sm text-gray ring-1 ring-light-gray/50 backdrop-blur-md',
         )}
       >
         <NavLink href="#our-story" hideOnMobile>
