@@ -23,7 +23,7 @@ export async function GET() {
     ),
     {
       width: 1920,
-      height: 1080,
+      height: 1280,
     },
   );
 }
