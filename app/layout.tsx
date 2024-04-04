@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'Nicole & Matt Wedding',
   description: 'Nicole & Matt Wedding',
   openGraph: {
+    images: 'https://nicolematt.com/og-bg.png',
     title: 'Nicole & Matt Wedding',
     description: 'Nicole & Matt Wedding',
     url: 'https://nicolematt.com',
@@ -28,6 +29,10 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  twitter: {
+    title: 'Matt Atkins',
+    card: 'summary_large_image',
   },
 };
 
