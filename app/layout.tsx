@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://nicolematt.com'),
   title: 'Nicole & Matt Wedding',
-  description: 'Nicole & Matt Wedding',
+  description: 'Please RSVP to our wedding!',
   openGraph: {
     images: 'https://nicolematt.com/og-bg.png',
-    title: 'Nicole & Matt Wedding',
-    description: 'Nicole & Matt Wedding',
+    title: 'Nicole & Matt Wedding Website',
+    description: 'Please RSVP to our wedding!',
     url: 'https://nicolematt.com',
     siteName: 'Nicole & Matt Wedding',
     locale: 'en_US',
