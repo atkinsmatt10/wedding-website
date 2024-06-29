@@ -14,13 +14,10 @@ function Counter({ label, value }: { label: string; value: number }) {
   );
 }
 
+const startValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
 export default function Countdown() {
-  const [countdown, setCountdown] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [countdown, setCountdown] = useState(startValues);
 
   const getRemainingTime = () => {
     const today = new Date().getTime();
@@ -29,7 +26,11 @@ export default function Countdown() {
     const minutes = Math.floor((time / 1000 / 60) % 60);
     const hours = Math.floor((time / (1000 * 60 * 60)) % 24);
     const days = Math.floor(time / (1000 * 60 * 60 * 24));
-    setCountdown({ days, hours, minutes, seconds });
+    if (end <= today) {
+      setCountdown(startValues);
+    } else {
+      setCountdown({ days, hours, minutes, seconds });
+    }
   };
 
   useEffect(() => {
