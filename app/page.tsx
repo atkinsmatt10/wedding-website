@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import FAQ from '@/components/faq';
@@ -11,10 +13,50 @@ import StayLink from '@/components/stay-link';
 import ScheduleBox from '@/components/schedule-box';
 import { config } from '@/config';
 import SaveToCalendar from '@/components/save-to-calendar';
+import Realistic from "react-canvas-confetti/dist/presets/realistic";
 
-export default function Home() {
+interface WeatherData {
+  current: {
+    temp: number;
+    weather: {
+      description: string;
+      icon: string;
+    }[];
+  };
+}
+
+async function getWeather(): Promise<WeatherData | null> {
+  const lat = 39.9526;
+  const lon = -75.1652;
+  const apiKey = process.env.OPENWEATHERMAP_API_KEY;
+
+  if (!apiKey) {
+    console.error("OpenWeatherMap API key is missing.");
+    return null;
+  }
+
+  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,alerts&units=imperial&appid=${apiKey}`;
+
+  try {
+    const res = await fetch(url, { next: { revalidate: 600 } }); // Revalidate every 10 minutes
+    if (!res.ok) {
+      console.error("Failed to fetch weather data:", res.statusText);
+      return null;
+    }
+    const data: WeatherData = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    return null;
+  }
+}
+
+export default async function Home() {
+  const weatherData = await getWeather();
+
   return (
     <div role="main">
+      <Realistic autorun={{ speed: 0.3, duration: 5000 }} />
       <Hero />
       <section className="relative px-5">
         <div className="absolute left-0 top-0 -z-10 h-48 w-48 rounded-full bg-gold blur-[80px]" />
@@ -26,6 +68,21 @@ export default function Home() {
             At Lilah 1601 N Front St, <br />
             Philadelphia, PA 19122
           </p>
+          {weatherData && weatherData.current && weatherData.current.weather[0] && (
+            <div className="mb-4 flex items-center gap-1 text-sm">
+              <Image
+                src={`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`}
+                alt={weatherData.current.weather[0].description}
+                width={40}
+                height={40}
+                unoptimized // External URL, optimization might not be needed/possible
+              />
+              <span>
+                Currently {Math.round(weatherData.current.temp)}°F and{" "}
+                {weatherData.current.weather[0].description}
+              </span>
+            </div>
+          )}
           <SaveToCalendar
             title="Nicole & Matt's Wedding"
             description="Join us at Museum of the American Revolution, 101 South
@@ -164,7 +221,7 @@ export default function Home() {
             label="Open Map"
             align="middle"
           >
-            Wm. Mulherin’s Sons, Lark, Middle Child, LMNO, Gilda, Johnny
+            Wm. Mulherin's Sons, Lark, Middle Child, LMNO, Gilda, Johnny
             Brenda's, International Bar, Martha, Two Robbers, Bok Ba
           </StayLink>
           <StayLink
@@ -199,7 +256,7 @@ export default function Home() {
         <Heading>Our Registry</Heading>
         <p className="mb-6 max-w-md text-center">
           You know what they say — your presence is a gift! However, if you want
-          to give us a present, we’re registered at Zola.
+          to give us a present, we're registered at Zola.
         </p>
         <Button variant="default" asChild>
           <a
@@ -216,7 +273,7 @@ export default function Home() {
         <AnimatedFlower className="absolute -top-28 left-10 mx-auto mb-6 mt-20 lg:left-1/2 lg:-translate-x-96" />
         <div className="absolute bottom-0 right-0 -z-10 h-48 w-48 rounded-full bg-gold blur-[80px]" />
         <h3 className="text-center text-xl font-bold text-gold">RSVP</h3>
-        <Heading>You’re Invited!</Heading>
+        <Heading>You're Invited!</Heading>
         <RSVPForm />
       </section>
     </div>

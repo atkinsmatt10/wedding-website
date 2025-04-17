@@ -20,8 +20,11 @@ import { useToast } from './ui/use-toast';
 import SpotifySearch from './spotify-search';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
+import { submitRsvp } from '@/app/actions/rsvpSubmit';
+import { WandSparkles } from 'lucide-react';
+import Link from 'next/link';
 
-const FormSchema = z.object({
+export const FormSchema = z.object({
   fullname: z.string().min(3, {
     message: 'Please enter your full name',
   }),
@@ -33,35 +36,15 @@ const FormSchema = z.object({
     required_error: 'Please confirm your assistance to the friday night',
   }),
   recommended_song: z.string().optional(),
+  recommended_song_label: z.string().optional(),
   comments: z.string().optional(),
 });
 
-export type FormFields = {
-  fullname: string;
-  email: string;
-  will_attend_wedding: 'yes' | 'no';
-  will_attend_fnight: 'yes' | 'no';
-  recommended_song?: string;
-  comments?: string;
-};
-
 export function RSVPForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuggesting, setIsSuggesting] = useState(false);
+  const [suggestion, setSuggestion] = useState('');
   const { toast } = useToast();
-  async function submit(params: FormFields) {
-    ('use server');
-    const data = new FormData();
-    Object.keys(params).forEach((key) => {
-      data.append(key, params[key as keyof FormFields] as string);
-    });
-    const APP_URL = `https://script.google.com/macros/s/AKfycbxw07nrSL8AmTbgU-u-AWtrardWTUqq4g2hrw8lIgiQW1lDG7lHOzNBeTAiKPhXTmzJ/exec`;
-    const request = await fetch(APP_URL, {
-      method: 'POST',
-      body: data,
-    });
-    const resp = await request.json();
-    console.log({ resp });
-  }
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -71,16 +54,106 @@ export function RSVPForm() {
       will_attend_wedding: undefined,
       will_attend_fnight: undefined,
       recommended_song: '',
+      recommended_song_label: '',
       comments: '',
     },
   });
 
-  const handleSubmit = async (data: FormFields) => {
+  const handleSubmit = async (data: z.infer<typeof FormSchema>) => {
     setIsLoading(true);
-    await submit(data);
-    form.reset();
+    const result = await submitRsvp(data);
     setIsLoading(false);
-    toast({ description: 'Thank you for confirming your attendance!' });
+
+    if (result.success) {
+      form.reset();
+      setSuggestion('');
+      toast({ 
+        title: "🎉 RSVP Confirmed!",
+        description: "We've received your response. We can't wait to celebrate with you!",
+      });
+    } else {
+      toast({ 
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem submitting your RSVP. Please try again.",
+        action: (
+          <Button variant="outline" size="sm" asChild>
+            <Link href="mailto:atkinsmatt10@gmail.com?subject=RSVP%20Form%20Error&body=Hi,%20I%20encountered%20an%20error%20while%20submitting%20the%20RSVP%20form.%20Please%20help.">Contact Us</Link> 
+          </Button>
+        ),
+      });
+    }
+  };
+
+  const handleSuggestComment = async () => {
+    setIsSuggesting(true);
+    setSuggestion('');
+    const attendanceStatus = form.getValues('will_attend_wedding');
+    const fullName = form.getValues('fullname') || '';
+    const existingComment = form.getValues('comments') || '';
+    const recommendedSongLabel = form.getValues('recommended_song_label') || '';
+
+    if (!fullName.trim()) {
+      toast({
+        variant: 'destructive',
+        title: 'Missing Name',
+        description: 'Please enter your name before getting a suggestion.',
+      });
+      setIsSuggesting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/suggest-comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          isAttending: attendanceStatus,
+          fullname: fullName,
+          existingComment: existingComment,
+          recommendedSongLabel: recommendedSongLabel,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch suggestion');
+      }
+
+      if (!response.body) {
+          throw new Error('Response body is null');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let streamedText = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        streamedText += chunk;
+        setSuggestion(streamedText);
+      }
+
+    } catch (error) {
+      console.error('Error fetching suggestion:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Suggestion Failed',
+        description: 'Could not generate a comment suggestion.',
+      });
+    } finally {
+      setIsSuggesting(false);
+    }
+  };
+
+  const handleAcceptSuggestion = () => {
+    const currentComment = form.getValues('comments') || '';
+    const separator = currentComment.trim() ? ' ' : '';
+    form.setValue('comments', currentComment + separator + suggestion, { shouldValidate: true });
+    setSuggestion('');
   };
 
   return (
@@ -208,7 +281,24 @@ export function RSVPForm() {
           disabled={isLoading}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Comments</FormLabel>
+              <div className="flex items-center justify-between">
+                <FormLabel>Comments</FormLabel>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSuggestComment}
+                  disabled={isLoading || isSuggesting}
+                  className="text-xs"
+                >
+                  {isSuggesting ? (
+                    <Loader2 className="mr-1 h-3 w-3 animate-spin" />
+                  ) : (
+                    <WandSparkles className="mr-1 h-3 w-3" />
+                  )}
+                  Suggest
+                </Button>
+              </div>
               <FormControl>
                 <Textarea
                   placeholder="Anything else you want to share?"
@@ -216,6 +306,22 @@ export function RSVPForm() {
                   {...field}
                 />
               </FormControl>
+              {suggestion && !isSuggesting && (
+                <div className="mt-2 rounded-md border border-dashed border-gray-300 bg-gray-50 p-3 text-sm text-gray-600">
+                   <p className="mb-2 font-medium">Suggestion:</p>
+                  <p className="italic">{suggestion}</p>
+                  <div className="mt-3 flex justify-center">
+                     <Button
+                       type="button"
+                       variant="outline"
+                       className="rounded-full px-4 py-1"
+                       onClick={handleAcceptSuggestion}
+                     >
+                       Accept Suggestion
+                     </Button>
+                  </div>
+                </div>
+              )}
               <FormMessage className="text-xs text-[red]" />
             </FormItem>
           )}
