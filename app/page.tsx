@@ -39,8 +39,16 @@ async function fetchWeatherData(): Promise<WeatherData | null> {
 
     if (!res.ok) {
       // Log error based on response from the API route
-      const errorBody = await res.json();
-      console.error("Failed to fetch weather data from API:", res.statusText, errorBody);
+      // Try to read as text first, as it might be an HTML error page
+      const errorText = await res.text(); 
+      console.error(`Failed to fetch weather data from API: ${res.status} ${res.statusText}`, errorText);
+      // Try to parse as JSON only if it looks like JSON, otherwise log the text
+      try {
+        const errorBody = JSON.parse(errorText);
+        console.error("Parsed error body:", errorBody);
+      } catch (parseError) {
+        // Ignore if it's not JSON, we already logged the text
+      }
       return null;
     }
     const data: WeatherData = await res.json();
