@@ -21,48 +21,62 @@ export default function Countdown() {
 
   const getRemainingTime = () => {
     const today = new Date();
-    const startDate = new Date(end); // Rename for clarity
+    const startDate = new Date(end); // Wedding date
     const diffTime = today.getTime() - startDate.getTime(); // Calculate time elapsed since end date
 
-    // If the end date hasn't passed yet, show 0 (or handle differently if needed)
+    // Log the values for debugging
+    console.log('Countdown Check:', {
+      today: today.toString(),
+      startDate: startDate.toString(),
+      diffTime: diffTime,
+    });
+
+    // If the end date hasn't passed yet, show 0
     if (diffTime <= 0) {
+      console.log('Wedding date has not passed yet, setting elapsed time to 0.');
       setCountdown({ years: 0, months: 0, days: 0 });
       return;
     }
 
-    // Calculate years, months, days elapsed since the startDate
+    // Calculate years, months, days elapsed since the wedding date
     let currentDate = new Date();
-    let pastDate = new Date(end); // Keep a reference to the fixed past date
+    let pastDate = new Date(end); // The wedding date
 
-    let years = currentDate.getFullYear() - pastDate.getFullYear();
-    let months = currentDate.getMonth() - pastDate.getMonth();
-    let days = currentDate.getDate() - pastDate.getDate();
+    let yearsElapsed = currentDate.getFullYear() - pastDate.getFullYear();
+    let monthsElapsed = currentDate.getMonth() - pastDate.getMonth();
+    let daysElapsed = currentDate.getDate() - pastDate.getDate();
 
-    // Adjust months and days if necessary
-    if (days < 0) {
-        months--;
-        // Get days in the month *before* the current month
-        const daysInPrevMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
-        days += daysInPrevMonth;
+    // If the current date's day is less than the past date's day,
+    // it means a full month hasn't passed yet in terms of days.
+    // Borrow days from the previous month.
+    if (daysElapsed < 0) {
+      monthsElapsed--;
+      // Get the last day of the month *before* the current month
+      const daysInLastFullMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+      daysElapsed += daysInLastFullMonth;
     }
 
-    if (months < 0) {
-        years--;
-        months += 12;
+    // If the current date's month is less than the past date's month (or became negative after borrowing days),
+    // it means a full year hasn't passed yet in terms of months.
+    // Borrow months from the previous year.
+    if (monthsElapsed < 0) {
+      yearsElapsed--;
+      monthsElapsed += 12;
     }
 
-    // Ensure no negative values (shouldn't happen with count-up logic if diffTime > 0)
-    if (years < 0 || months < 0 || days < 0) {
-       // This case indicates an issue or the date hasn't passed, handle as 0
+    // Final check: If yearsElapsed is negative after adjustments, something is wrong or date hasn't passed
+    if (yearsElapsed < 0) {
+       console.log('Negative years calculated, resetting elapsed time to 0.');
        setCountdown({ years: 0, months: 0, days: 0 });
     } else {
-       setCountdown({ years, months, days });
+       console.log('Calculated elapsed time:', { years: yearsElapsed, months: monthsElapsed, days: daysElapsed });
+       setCountdown({ years: yearsElapsed, months: monthsElapsed, days: daysElapsed });
     }
   };
 
   useEffect(() => {
     getRemainingTime();
-    const counter = setInterval(getRemainingTime, 1000);
+    const counter = setInterval(getRemainingTime, 1000 * 60); // Update every minute
     return () => clearInterval(counter);
   }, []);
 

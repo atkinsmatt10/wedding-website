@@ -55,7 +55,6 @@ export default function Navbar({ isFixed }: { isFixed: boolean }) {
         <NavLink href="#top" isLogo>
           <svg
             width="91"
-            height="auto"
             viewBox="0 0 91 100"
             fill="none"
             className={cn('lg:mx-auto', isFixed ? 'w-12' : 'w-12 lg:w-20 ')}
