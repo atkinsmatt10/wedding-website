@@ -14,7 +14,7 @@ import { config } from '@/config';
 import SaveToCalendar from '@/components/save-to-calendar';
 import Realistic from "react-canvas-confetti/dist/presets/realistic";
 import Confetti from '@/components/confetti';
-import { getWeatherData, WeatherData } from './api/weather/route'; // Import directly
+import { getWeatherData, WeatherData } from '@/lib/weather'; // Import from the new lib file
 
 // Keep the interface definition or import if needed by HomePageClient, 
 // but it's also exported from the route now.
